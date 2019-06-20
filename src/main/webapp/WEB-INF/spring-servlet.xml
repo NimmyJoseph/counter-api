@@ -19,17 +19,18 @@
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="properties" ref="counterProperties" />
 	</bean>
-
+    
 <!-- Spring Security Configuration -->
 	<security:http auto-config="true" use-expressions="true">
-		<security:intercept-url pattern="/*" access="hasRole('ROLE_USER')"/>
+		<security:intercept-url pattern="/search" access="hasRole('ROLE_USER')"/>
+		<security:intercept-url pattern="/top/*" access="hasRole('ROLE_USER')"/>
 		<security:csrf disabled="true"/>
 	</security:http>
 	
 	<security:authentication-manager>
 		<security:authentication-provider>
 			<security:user-service>
-				<security:user name="optus" password="candidates" authorities="ROLE_USER"/>
+				<security:user name="${auth.username}" password="${auth.password}" authorities="ROLE_USER"/>
 			</security:user-service>		
 		</security:authentication-provider>
 	</security:authentication-manager>

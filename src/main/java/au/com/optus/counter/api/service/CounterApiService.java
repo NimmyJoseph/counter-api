@@ -1,4 +1,4 @@
-package au.com.optus.counter.api.processor;
+package au.com.optus.counter.api.service;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -16,11 +16,11 @@ import java.util.StringTokenizer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import au.com.optus.counter.api.models.SearchRequest;
-import au.com.optus.counter.api.models.SearchResponse;
+import au.com.optus.counter.api.model.SearchRequest;
+import au.com.optus.counter.api.model.SearchResponse;
 
 @Component
-public class CounterApiProcessor {
+public class CounterApiService {
 
 	@Value("${text.file}")
 	protected String textFile;
@@ -42,7 +42,7 @@ public class CounterApiProcessor {
 
 	public String topCountProcess(String val) throws IOException {
 		String returnStr = new String();
-		Integer top = Integer.parseInt(val);
+		int top = Integer.parseInt(val);
 		Map<String, Integer> map = getCount();
 
 		List<Map.Entry<String, Integer>> resultList = new ArrayList<Map.Entry<String, Integer>>(

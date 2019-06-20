@@ -1,4 +1,4 @@
-package au.com.optus.counter.api.models;
+package au.com.optus.counter.api.model;
 
 import java.util.ArrayList;
 
